@@ -101,3 +101,195 @@ nothing to commit, working tree clean
 User@Illumin▒epc MINGW64 ~/gitBasics (div)
 $ ls
 README.md
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ touch home.html
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ code home.html
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ git stash push -m "add a home file"
+Saved working directory and index state On div: add a home file
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ touch about.html
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ code about.html
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ git stash push -m "add about.html file"
+No local changes to save
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ git add .
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ git stash push -m "add about.html file"
+Saved working directory and index state On div: add about.html file
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ touch team.html
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ code team.html
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ git stash push -m "add team.html file"
+No local changes to save
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ git add .
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ git stash push -m "add team.html file"
+Saved working directory and index state On div: add team.html file
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ git status
+On branch div
+nothing to commit, working tree clean
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ ls
+README.md
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ git stash list
+stash@{0}: On div: add team.html file
+stash@{1}: On div: add about.html file
+stash@{2}: On div: add a home file
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ git stash pop stash@{1}
+On branch div
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   about.html
+        new file:   home.html
+
+Dropped stash@{1} (80dfc3c8622c034435d56618dfe286a27a0d64e5)
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ git status
+On branch div
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   about.html
+        new file:   home.html
+
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ git stash list
+stash@{0}: On div: add team.html file
+stash@{1}: On div: add a home file
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ git stash pop stash@{1}
+On branch div
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   about.html
+        new file:   home.html
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   README.md
+
+Dropped stash@{1} (027fdb4b4413e1b614a609a6c0c9ae5b118f3428)
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ git add .
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ git status
+On branch div
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   README.md
+        new file:   about.html
+        new file:   home.html
+
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ git commit -m "warking on stash"
+[div 896e247] warking on stash
+ 3 files changed, 123 insertions(+)
+ create mode 100644 about.html
+ create mode 100644 home.html
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ git push
+fatal: The current branch div has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin div
+
+To have this happen automatically for branches without a tracking
+upstream, see 'push.autoSetupRemote' in 'git help config'.
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ git push --set-upstream origin div
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 1.40 KiB | 1.40 MiB/s, done.
+Total 5 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), done.
+remote:
+remote: Create a pull request for 'div' on GitHub by visiting:
+remote:      https://github.com/illumineMUTUYIMANA/Git-Basics/pull/new/div
+remote:
+To https://github.com/illumineMUTUYIMANA/Git-Basics.git
+ * [new branch]      div -> div
+branch 'div' set up to track 'origin/div'.
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ git status
+On branch div
+Your branch is up to date with 'origin/div'.
+
+nothing to commit, working tree clean
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$  git stash list
+stash@{0}: On div: add team.html file
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$  git stash
+No local changes to save
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ git stash pop stash@{0}
+On branch div
+Your branch is up to date with 'origin/div'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   team.html
+
+Dropped stash@{0} (4991de5e08444903edd5ed171bf662cf403e5136)
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$  git status
+On branch div
+Your branch is up to date with 'origin/div'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   team.html
+
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ git reset --hard
+HEAD is now at 896e247 warking on stash
+
+User@Illumin▒epc MINGW64 ~/gitBasics (div)
+$ git status
+On branch div
+Your branch is up to date with 'origin/div'.
+
+nothing to commit, working tree clean
